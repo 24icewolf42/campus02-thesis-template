@@ -41,7 +41,6 @@
 \RequirePackage{setspace}
 \RequirePackage{titlesec}
 \RequirePackage[austrian,american]{babel}
-\RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{fontspec}
 \RequirePackage[hyphens]{url}
@@ -85,10 +84,6 @@
 \RequirePackage{chngcntr}
 
 \RequirePackage[
-  pdftitle={\campusTitle},
-  pdfauthor={\campusAuthor},
-  pdfsubject={\campusSubject, \campusDate},
-  pdfkeywords={\campusKeywords},
   pdffitwindow=true,
   pdfpagelayout={OneColumn},
   bookmarks=true,
@@ -215,7 +210,13 @@
 \setkomafont{section}{\fontspec{Arial}\Large\bfseries}
 \setkomafont{subsection}{\fontspec{Arial}\large\bfseries}
 \setkomafont{chapterentry}{\fontspec{Arial}\bfseries}
-\addtokomafont{chapter}{\MakeUppercase}
+
+% Make chapter titles uppercase is a pain.
+\titleformat{\chapter}[hang]
+  {\fontspec{Arial}\Large\bfseries}
+  {\thechapter}
+  {.5em}
+  {\MakeUppercase}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -286,7 +287,7 @@ Ich erkläre ehrenwörtlich, dass ich die vorliegende Arbeit selbstständig und 
 {
   \begin{flushleft}
     \vskip 2em
-    \hfill\parbox[c]{7.3cm}{\missingfigure[figwidth=5cm]{Signature}}
+    \hfill\parbox[c]{7.3cm}{\includegraphics[width=5cm]{images/Placeholder}}
     \begin{tabular}{lclcl}
       {\campusCity, \campusDate} & ~\hfill & \hspace*{3cm} & ~\hfill &  \underline{\hspace*{5cm}} \\
       ~\hfill & ~ &   & ~ &  \multicolumn{1}{c}{Signature}   \\
