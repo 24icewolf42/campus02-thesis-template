@@ -2,21 +2,22 @@
 % !TEX builder = latexmk
 % !Mode:: "TeX:UTF-8:Hard"
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% BAC01
+%% Scientific Article / Thesis template
 %%
-%% Andreas Landgraf (2015)
+%% Andreas Landgraf (2016)
+%%     andreas dot landgraf at edu dot campus02 dot at
 %%
 %% see "How to Write a Thesis in LaTeX"
 %%     https://www.sharelatex.com/blog/2013/08/02/thesis-series-pt1.html
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \def\campusSubject{BACHELOR THESIS}
-\def\campusTitle{Analysis and Comparison of Wireless Personal Area Networking Technologies for low-power Smart Home Applications}
-\def\campusAuthor{Andreas Landgraf}
-\def\campusPersKnz{1310317046}
+\def\campusTitle{\LaTeX{} Scientific Document Template}
+\def\campusAuthor{Lorem Ipsum}
+\def\campusPersKnz{123456789}
 \def\campusCity{Graz}
 \def\campusDate{\today}
-\def\campusKeywords{WPAN, Smart Home, Bluetooth, Bluetooth Smart, UWB, ZigBee, 6LoWPAN, Wi-Fi, 802.11ad}
+\def\campusKeywords{Campus02, Graz, Thesis}
 
 \documentclass[
   headexclude,
@@ -237,11 +238,11 @@
     {by \\ {\Large \textbf{\campusAuthor}} \\ \campusPersKnz \par}
     \vskip 2em
     {supervised and reviewed by \par}
-    {\normalsize Dipl.-Ing. Manuela Reinisch \\ FH-Prof. Dipl.-Ing. Dr.techn. Michael Terler \par}
+    {\normalsize Dipl.-Ing. Johann Johannes \\ FH-Prof. Dipl.-Ing. Dr.techn. Michael Terler \par}
     \vfill
     {
       \begin{flushleft}
-        \hfill\parbox[c]{7.3cm}{\includegraphics[width=5cm]{images/Signature}}
+        \hfill\parbox[c]{7.3cm}{\includegraphics[width=5cm]{images/Placeholder}}
         \begin{tabular}{lclcl}
           {\campusCity, \campusDate} & ~\hfill & \hspace*{3cm} & ~\hfill &  \underline{\hspace*{5cm}} \\
           ~\hfill & ~ &   & ~ &  \multicolumn{1}{c}{Signature}   \\
@@ -285,7 +286,7 @@ Ich erkläre ehrenwörtlich, dass ich die vorliegende Arbeit selbstständig und 
 {
   \begin{flushleft}
     \vskip 2em
-    \hfill\parbox[c]{7.3cm}{\includegraphics[width=5cm]{images/Signature}}
+    \hfill\parbox[c]{7.3cm}{\missingfigure[figwidth=5cm]{Signature}}
     \begin{tabular}{lclcl}
       {\campusCity, \campusDate} & ~\hfill & \hspace*{3cm} & ~\hfill &  \underline{\hspace*{5cm}} \\
       ~\hfill & ~ &   & ~ &  \multicolumn{1}{c}{Signature}   \\
@@ -295,11 +296,11 @@ Ich erkläre ehrenwörtlich, dass ich die vorliegende Arbeit selbstständig und 
 
 %\chapter*{Acknowledgement}
 
-%Firstly, I would like to express my sincere gratitude to the supernovae for the creation of all substantial atoms and molecules our fantastic world consists of. Their ephemeral power made it possible to form all known and unknown creatures and plants. Without this furtune it would not be possible to live this wunderful life. I thank my family for supporting me spiritually throughout my life and during writing this thesis.
+%Firstly, I would like to express my sincere gratitude to ...
 
 \chapter*{Abstract}
 
-Wireless networking technologies are widely used in communication devices and services in almost every area of daily business. Medical environments, security authorities, and other organizations use them to increase their performance. In particular the Smart Home sector is one of the areas that has been researched extensively. From ecological and technological point of view, the opportunities for new technologies are vast. Therefore, it is important to compare such technologies using ecological parameters. This thesis will give an overview of the wireless network types, ranging from body area to global area networks, and introduces the different Smart Home networks. Furthermore, the major wireless networking technologies of personal area networks, Bluetooth, Bluetooth Smart, Ultra Wideband, ZigBee, Internet Protocol version 6 over Low-Power Wireless Personal Area Network and Wi-Fi, are discussed in detail. A comparison is made with current chipset manufacturers implementations to create a tabular overview of these technologies and their suitability in Smart Home networks. Results show that every technology has its optimal field of application in a modern Smart Home. However, it can be concluded that further experiments will show more accurate results.
+This work deals with the introduction of the subject 'Wissenschaftliches Arbeiten' at ...
 
 \vspace{2cm}
 
@@ -308,7 +309,7 @@ Wireless networking technologies are widely used in communication devices and se
 \chapter*{Zusammenfassung}
 
 \begin{otherlanguage}{austrian}
-Drahtlose Netzwerktechnologien zählen zum Rückgrad der Kommunikationseinrichtungen unseres täglichen Arbeitsalltags. In medizinischen Einrichtungen, Sicherheitsbehördern und anderen Organisationen werden diese Technologien zur Leistungssteigerung und zur Erhöhung der Effizienz eingesetzt. Zunehmend wird in letzter Zeit auch der Smart Home Sektor Ziel intensiver Forschung im Bereich der Netzwerktechnologien. Aus ökologischer und technologischer Sicht ergeben sich Chancen für neue effizientere Technologien. Daher ist es wichtig, solche Technologien unter den Gesichtspunkten ökologischer Parameter zu vergleichen. Diese Arbeit gibt einen Überblick über die drahtlosen Netzwerktypen, die von körpernahen bis hin zu globalen Netzwerken reichen und erläutert die verschiedenen Smart Home Netzwerke. Aus dem Bereich der persönlichen Netzwerke werden die wichtigsten drahtlosen Netzwerktechnologien vorgestellt. Dabei werden Bluetooth, Bluetooth Smart, Ultra-Breitband, ZigBee, Internet Protocol Version 6 für Wireless Personal Area Network mit niedrigem Energieverbrauch und Wi-Fi ausführlich diskutiert. Ein Vergleich mit Implementierungen von Chip-Herstellern führt zu einer tabellarischen Übersicht dieser Technologien und schafft die Grundlage für die Beurteilung der Eignung in Smart Home Netzwerken. Die Ergebnisse zeigen, dass jede Technologie ihr optimales Einsatzgebiet in einem modernen Smart Home hat. Es kann jedoch der Schluss gezogen werden, dass künftige Experimente zur Eignung dieser Technologien im Smart Home diese Beurteilung vervollständigen können.
+Die vorliegende Arbeit befasst sich mit der Einführung des Kurses 'Wissenschaftliches Arbeiten' an der ...
 \end{otherlanguage}
 
 \vspace{2cm}
@@ -335,11 +336,9 @@ Drahtlose Netzwerktechnologien zählen zum Rückgrad der Kommunikationseinrichtu
 \input{chapters/chapter02}
 \input{chapters/chapter03}
 \input{chapters/chapter04}
-\input{chapters/chapter05}
-\input{chapters/chapter06}
 \input{chapters/conclusion}
 
-% uncomment to include all literature sources
+% uncomment to include all literature sources (for testing only)
 %\nocite{*}
 
 \clearpage
