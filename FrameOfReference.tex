@@ -1,0 +1,75 @@
+\documentclass[a4paper]{scrartcl}
+
+\usepackage[left=2.5cm,right=2cm,top=2cm,bottom=2cm,includehead,includefoot]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman,english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{pdfpages}
+\usepackage{blindtext}
+\usepackage[babel]{csquotes}
+\usepackage[style=alphabetic,hyperref=true,backend=bibtex8]{biblatex}
+
+\addbibresource{Literature.bib}
+
+\renewcommand*{\titlepagestyle}{empty}
+\renewcommand*{\partformat}{}
+
+\begin{document}
+
+\titlehead {
+\parbox[c]{8cm}{
+\slshape{CAMPUS} \upshape 02 Fachhochschule der Wirtschaft\par Studiengang Innovationsmanagement
+}
+\hfill
+\parbox[c]{5cm}{
+\includegraphics[width=5cm]{images/Campus02_Logo.pdf}
+}
+}
+\title{\vspace{5,8cm}Frame of Reference}
+\author{Andreas Landgraf}
+\date{30.09.2015}
+\publishers{\vspace{1cm}Supervisors: \\ FH-Prof. Dipl.-Ing. Dr.techn. Michael Terler \\ Dipl.-Ing. Manuela Reinisch}
+\maketitle
+
+\newpage
+\part{Frame of Reference}
+
+\begin{description}
+
+\item[Working Title] \hfill \break
+Analysis and comparison of wireless personal area networking technologies for low-power Smart Home Applications.
+
+\item[Problem Definition] \hfill \break
+In the modern-day world, technology is no longer a particular tool for specific tasks, but it turned to a combination of many smart applications. Most aspects of our daily life could be assisted by smart technologies. A prominent example is the smart home. Modern houses are filled up with smart devices and sensors. Those are connected to a network by wire or wireless. Because they need energy to operate, energy efficiency is a requirement.\par
+Furthermore wired connections are not always possible or desired. Therefor wireless networking technologies are mostly used in smart home devices and sensors. Enhancing and developing such wireless networking technologies are important tasks to R\&D specialists.\par
+Typically wireless personal area networking technologies are used in smart home environments for most applications of the smart devices and sensors. Those wireless personal area networking technologies differ in many parameters from each other.
+
+\item[Research Issue] \hfill \break
+What are the key differences of wireless personal area networking technologies for selection in low-power Smart Home Applications?
+
+\item[Aims of the Work] \hfill
+\begin{itemize}
+\item One goal of this thesis is to gain knowledge on the key parameters of wireless personal area networking technologies in the context of energy efficiency as a requirement for low-power Smart Home Applications.
+\item Another goal of this thesis is to create a guidance for R\&D specialists based on the key parameters of the wireless personal area networking technologies in context of low-power Smart Home Applications.
+\end{itemize}
+
+\item[Reading Audience] \hfill \break
+R\&D specialists and product managers in context of Smart Home Engineering.
+
+\newpage
+\item[Research Design - Graphical Frame of Reference] \hfill \break
+\includegraphics[width=\linewidth]{images/graphical_frame_of_reference}
+
+\newpage
+\item[Preliminary Table of Contents] \hfill \break
+\par
+\input{TableOfContents.tex}
+
+\newpage
+\nocite{*}
+\printbibliography
+
+\end{description}
+
+\end{document}

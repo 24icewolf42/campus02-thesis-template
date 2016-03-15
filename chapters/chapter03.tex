@@ -1,0 +1,62 @@
+\chapter{Smart Home}
+\label{ch:smart-home}
+
+Smart Homes are interactive spaces where consumer electronics, healthcare products, security installations, energy monitoring, mobile phones, home computing equipment and many more electronic devices and services are interconnected to provide remote control and monitoring services. \footcite[Cf.][]{Alam2012}
+
+The Smart Home is based on pervasive or ubiquitous computing, a model where the user interacts in a normal manner with his home. This computing model follows the trends of evolution in information technology. Developing from communication devices, over mobility, past ubiquitous systems, hence to ambient intelligence, the current Smart Home systems are artificial computing devices. \footcite[Cf.][]{Lalanda2010}
+
+Those devices have to follow the aspects of miniaturing, to ideally disappear at their operating location. Furthermore they have to be able to communicate with a whole bunch of other Smart Home systems. The need to be autonomous in the context of energy supply. Batteries and energy harvesting are key technologies to their energy autonomy. \footcite[Cf.][]{Lalanda2010}
+
+Technologies from different network types are found in or incorporating with Smart Home systems. Current Smart Home systems are communicating through wireless networking technologies. Ranging from very short range \gls{wban} to wide range \gls{wwan}. They form according to their connected devices and services different types of networks. \footcite[Cf.][]{Saito2013}
+
+The following chapters discusses the main types of Smart Home networks.
+
+\section{Wireless Home Entertainment Networks}
+
+The \gls{when} is the domain of streaming rich media content from centralized services or mobile devices. Nowadays video streaming is a booming market. Amazon Video, Netflix, Youtube and DailyMotion are some examples of streaming video hosters. They offer full high definition videos, movies and clips. Several million users are watching streaming content every day. Such media streams are often transported over the \gls{http} using a container for the video and audio channels. There are several embedded processor manufacturer providing processors with hardware-based acceleration for decoding several video and audio formats. \footcite[Cf.][593--596]{Kurose2012}
+
+The NVIDIA Tegra X1 mobile processor is a powerhorse featuring 4K (4096 x 2160 pixels) video codec. With an operating power of less than 10 Watts this processor is designed for video intensive tasks while operating fanless on embedded platforms. \footcite[Cf.][]{tegrax12015}
+
+Such embedded platforms are data sinks for streaming media content. The data sources are commonly located on centralized storage devices or streamed directly from the Internet or mobile devices. Embedded platforms featuring high performance processors are also data sources for media streams. \footcite[Cf.][123]{Augusto2006}
+
+The wireless networking technologies mapping home entertainment networks must provide sufficient bandwidth for streaming of high definition media. A 4K movie has a bitrate of around 40 Mbps. Furthermore the wireless network has to provide low latency and high reliability. In case of a packet loss, the missing packets needs to be retransmitted within a few milliseconds. Additionally, multipath and coexistence issues needs to get addressed by \gls{when} technologies. \footcite[Cf.][]{arris2014}
+
+\section{Wireless Home Automation Networks}
+
+Wireless sensors and actuators are the devices forming \glspl{whan}. Remote applications are used to monitor and control those devices. \gls{whan} devices use low-power wireless networking technologies and they can operate energy autonomously if they are battery-powered or use energy harvesting mechanisms. The typical use cases for \gls{whan} are spread across all areas of a users home: \footcite[Cf.][]{Gomez2010}
+
+\begin{itemize}
+  \item Light control: Through presence detection or luminous intensity measuring sensors.
+  \item Remote Control: By using intelligent \gls{rf} sensors.
+  \item Smart Energy: A combination of several sensors could detect the energy needs and trigger control systems.
+  \item Remote care: Wearables can monitor health parameters from patients and transmit them to receiver nodes.
+  \item Security and safety: Any sensor might be a source for security application systems.
+\end{itemize}
+
+According to the use cases for \glspl{whan} the number of sensors and actuators is resulting in a very dense network. The multipath characteristics of a home and the interference with other wireless networks are issues to \glspl{whan}. Additionally the nodes within a \gls{whan} should be able to retransmit control messages to other nodes, building a multi-hop end-to-end communication facility. \footcite[Cf.][]{Gomez2010}
+
+\section{Wireless Machine-To-Machine Networks}
+
+The number of \gls{m2m} networks is growing exponentially and building the \gls{iot}. Sensors and other intelligent devices are connected to the Internet through home gateways. \gls{m2m} is very close to \gls{whan} in case of the network nodes. Both networks consists of sensors, actuators and remote control and monitoring devices and applications. The main difference between \gls{m2m} and \gls{whan} is that \gls{whan} consists of \gls{m2m}, \gls{h2m} and \gls{mih} nodes. \footcite[Cf.][]{Jara2013}
+
+The typical network characteristics and requirements of \gls{m2m} devices are: \footcite[Cf.][]{Minoli2013}
+
+\begin{itemize}
+  \item Retransmission: Recover from packet loss and other transmission issues.
+  \item Scalability: Support several hundreds of nodes at various link speeds.
+  \item Prioritization: Routing of emergency messages at higher priority.
+  \item Security: Prevent remote attacks through strong encryption algorithms.
+\end{itemize}
+
+\section{Wireless Home Networks}
+
+Embedded processors can be found in our mobile phones, laptops, watches, light bulbs, and many more. The more intelligent those devices get, the more information they will provide. Therefore a ubiquitous networking environment is essential to transmit this information. The previous network types can be summarized to the \glspl{whn}, whereas sensors, actuators, consumer electronics, smart phones, \glspl{wpan} or \glspl{wlan}, and even the electric car are part of. \Cref{fig:home_network_parameters} summarizes the characteristics and requirements of the different network types and their nodes. \footcite[Cf.][7286--7290]{Mendes2015}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[
+    width=8cm,
+  ]{images/han_parameters}
+  \caption{Parameters of a \gls{han}, adapted from: \cite[7290]{Mendes2015}}
+  \label{fig:home_network_parameters}
+\end{figure}

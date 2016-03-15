@@ -1,0 +1,183 @@
+\chapter{Wireless Networking Technologies}
+\label{ch:wireless-networking}
+
+Everyday we use networking technologies to exchange information. The \gls{ict} industry is the innovation and development engine of these technologies. They allow us to use information technology wherever and whenever we need them. Whether it is in the office, at home, or on the way, \gls{ict} is available everywhere. \footcite[Cf.][1]{Pahlavan2009}
+
+There are many different technologies used to keep us connected to the global Internet by wire and wireless. More than 300 submarine cables are installed globally to interconnect all regions of the world using high-speed and high-capacity data routes. A vast number of access points builds the gap between the wired and the wireless \gls{ict}. The technologies used for wireless networks are commonly differentiated by their geographic range of operation. \footcite[Cf.][49--52]{Ephremides2013}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[
+    width=\textwidth,
+  ]{images/wireless_network_types}
+  \caption{Overview of the Wireless Network Types, adapted from: \cite[6]{Latre2011}}
+  \label{fig:wireless-network-type}
+\end{figure}
+
+\Cref{fig:wireless-network-type} shows an overview of the wireless network types, sorted in ascending order of their communication range. They can be categorized into \gls{wban}, \gls{wpan}, \gls{wlan}, \gls{wcan}, \gls{wman}, \gls{wwan}, \gls{wran}, and \gls{wgan}. \footcite[Cf.][6]{Latre2011}
+
+\section{Wireless Body Area Network}
+
+Regarding their geographical coverage, the smallest is the \gls{wban}. A \gls{wban} covers an area of about one meter and has a very limited amount of throughput, which is the domain of health monitoring applications. Devices operating in a \gls{wban} are for example wearables, attached to the body. \footcite[Cf.][1660]{Movassaghi2014}
+
+The IEEE 802.15.6 standard define Physical and Medium Access Control layers for \gls{wban}. \footcite[Cf.][1]{Kwak2010}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[
+    height=4cm,
+    width=7cm,
+  ]{images/wban}
+  \caption{Typical \gls{wban} scenario, source: Own diagram}
+  \label{fig:wban}
+\end{figure}
+
+Health and fitness applications use biosensors measuring biochemical interactions with the human body. Those signals are transmitted and monitored remotely. \gls{wban} sensors, as shown in \cref{fig:wban}, allow users to operate freely without wires. This gives the individual maximum amount of mobility. A typical \gls{wban} sensor system consists of a biosensor, a transmission unit, and a control and processing unit. They are used to monitor fitness or disease progression using typical parameters: \footcite[Cf.][69--70]{Minoli2013}
+
+\begin{itemize}
+  \item Temperature: Both the user and ambient temperature are measured by specific sensors and recorded for further processing and evaluation.
+  \item Blood Glucose Level: This is an important parameter for e.g. diabetes patients.
+  \item Blood Pressure: A simple indicator for a person's health.
+  \item Oxygen Saturation: Measured indirectly, which means it cannot measure the amount of oxygen used by the user.
+  \item Heart Rate: Increasingly important for top athletes.
+  \item Step Count: An important parameter to measure daily fitness.
+\end{itemize}
+
+Standardization of \gls{wban} technologies is an important task of several research groups. Nowadays a number of technologies are used to operate within a \gls{wban}: \footcite[Cf.][71]{Minoli2013}
+
+\begin{itemize}
+  \item ZigBee, an IEEE standard based protocol, enabling the use of low power wireless technology with less implementation effort.
+  \item Bluetooth Smart, is the low power variant of the Bluetooth protocol, also an IEEE standard. The data rate is limited, but battery life make it suitable for medical applications in \gls{wban} systems.
+  \item NFC, a contactless communication technology used mainly by smart phones or tablets to gather information of compatible sensors.
+\end{itemize}
+
+Bluetooth and ZigBee are mainly used in \gls{wpan} environments and adopted for applications operating using a \gls{wban}. The IEEE 802.15.6 task group was founded to standardize \gls{wban} technologies. \footcite[Cf.][10]{Latre2011} The current standard proposes different frequency layers for data transmission: The \gls{nb} ranging from 400 MHz to 2.4 GHz, the \gls{uwb} operating between 3.1 GHz and 11.2 GHz and the \gls{hbc} which uses 10 MHz to 50 MHz. Another technology is recently been added to the \gls{wban} technology list: low-power WiFi, which is an adaptation of the IEEE 802.11 standard. \footcite[Cf.][]{Kwak2010}\footcite[Cf.][180--187]{Minoli2013}
+
+\section{Wireless Personal Area Network}
+
+The \gls{wpan} has an indoor coverage up to 20 meters and is capable of high data rates up to 110 Mbps. \footcite[Cf.][676]{Garg2007} The IEEE 802.11ah low-power WiFi protocol is currently under standardization, but other protocols like \gls{rfid}, ZigBee, Bluetooth or \gls{nfc} have already proved their concepts and are widely used in \gls{wpan} environments. They connect \gls{wban} devices to higher level network architectures like \gls{wpan} or \gls{wlan}. \footcite[Cf.][]{wban_wpan_wlan}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[
+    width=7.5cm,
+  ]{images/wban_wpan_wlan}
+  \caption{Interconnection of \gls{wpan}, source: \cite{wban_wpan_wlan}}
+  \label{fig:wban_wpan_wlan}
+\end{figure}
+
+\Cref{fig:wban_wpan_wlan} shows an overview of a typical \gls{wpan} architecture. The \gls{wpan} is interconnecting devices and services from the \gls{wban}. Body sensors and wearables of the \gls{wban} are enabled to transmit their gathered information during their monitoring process to services or devices in \gls{wpan} for storage or further processing. The \gls{wpan} is focused on interconnecting personal equipment for portable and mobile communication. \footcite[Cf.][654-704]{Garg2007}
+
+Such devices operating in a \gls{wpan} are: \footcite[Cf.][654-704]{Garg2007}
+
+\begin{itemize}
+  \item \glspl{pc} or Notebooks: Desktop \glspl{pc} and notebooks are used for web surfing, home office, gaming and other applications. In conjunction with the \gls{wban} devices they have mainly the role of a storage and control device, and they are able to bridge between various wired or wireless networks.
+  \item \glspl{pda} or Tablets: Nowadays a very important device to control entertainment systems, act within social networks and other mobile applications.
+  \item Mobile Phones: Maybe the only technical device spread across the whole world and de facto the standard device which every human being is using every single day. Most mobile phones have multiple wireless technologies implemented, a wireless cellular network technology and a \gls{wban} / \gls{wpan} technology, like Bluetooth.
+  \item Printers: Many printers, both standalone and mobile models, are capable of accepting print jobs through \gls{wban} technologies, like Bluetooth and NFC.
+  \item Speakers and Microphones: Bluetooth audio devices, such as hands-free equipment, are widely used for fitness and entertainment.
+  \item Consumer Electronics: Many remote controls are based on Bluetooth or other \gls{wpan} technologies to control electronic equipment and for streaming audio and video signals.
+\end{itemize}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[
+    width=13cm,
+  ]{images/wpan}
+  \caption{Overview of \gls{wpan} standards, source: \cite[143]{Jawad2014}}
+  \label{fig:wpan}
+\end{figure}
+
+Nowadays the social networks are used to share arbitrary personal information of different media types around the world. These media consists of pictures taken by mobile phones, videos shot by action cams and many others. Those media streams have different requirements to \gls{wpan} technologies, such as bandwidth, data throughput and robustness. \footcite[Cf.][60]{Yang2008}
+
+\gls{uwb} and IEEE 802.11ah are exposed to provide high date rates up to 1 Gbps for streaming high definition video signals. Conversely, many other applications demand on lower data rates for transmission of monitoring and control commands, the domain where ZigBee is located. \Cref{fig:wpan} gives a summary of the IEEE \gls{wpan} technology standards. \footcite[Cf.][654]{Garg2007}
+
+\section{Wireless Local Area Network}
+
+The IEEE 802.11 working group is specialized on defining standards for the \gls{wlan}. The data rate is extended to 700 Mbps and the indoor coverage is around 50 meters, whereas the outdoor range is up to approximately 250 meters. The IEEE 802.11ad and IEEE 802.11ay groups are working on standardization of very fast 60 GHz communication offering data rates beyond 5 Gbps for IEEE 802.11ad respectively 100 Gbps for IEEE 802.11ay. Key requirements for \gls{wlan} technologies are: \footcite[Cf.][]{Bellalta2015}
+
+\begin{itemize}
+  \item Coexistence: \glspl{wlan} operate within restricted \gls{ism} bands and therefore the \gls{wlan} technologies have to be able to coexist with other wireless networks operating at their bands.
+  \item Throughput: To further increase the throughput of a \gls{wlan} system, the use of multiple antennas and an optimized or new wireless technology has to be discovered.
+  \item Energy Efficiency: This is a very difficult requirement which is in contrast to throughput increase. Nonetheless is required to further decrease the energy consumption of the \gls{wlan} systems.
+  \item Backward Compatibility: Although it leads to inefficiency, a mechanism to provide backward compatibility to former IEEE 802.11 standards should be provided.
+\end{itemize}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[
+  width=13.5cm,
+  ]{images/wlan}
+  \caption{Typical \gls{wlan} scenario, source: \cite{devolo}}
+  \label{fig:wlan}
+\end{figure}
+
+\Cref{fig:wlan} shows a common indoor \gls{wlan} environment spread across multiple rooms. A smart TV streaming high definition video signals and media meta information from the Internet, a tablet receiving the latest news and social media updates, and a notebook running a fast-paced online game. The requirements to \gls{wlan} technologies are very diverse and span from low rate secure data transmission to very high rate data streaming. \footcite[Cf.][]{devolo}
+
+\begin{table}[h!]
+  \renewcommand{\arraystretch}{2}
+  \newcolumntype{P}[1]{>{\raggedright}p{#1}}
+  \centering
+  \begin{tabular}{ P{3cm} P{2.8cm} P{2.8cm} P{2.8cm} >{\arraybackslash}P{2.8cm} }
+    \toprule
+    \rowcolor{Gainsboro}
+    \textbf{Feature / IEEE standard} & \textbf{802.11b} & \textbf{802.11g/a} & \textbf{802.11n} & \textbf{802.11ac} \\
+    \midrule
+    \textbf{Maximum data rate per stream} & 11~Mbps & 54~Mbps & >100~Mbps & >500~Mbps / >1000~Mbps \\
+    \textbf{Frequency band} & 2.4~GHz & 2.4~GHz / 5~GHz & 2.4~GHz and 5~GHz & 5~GHz \\
+    \textbf{Channel width} & 20~MHz & 20~MHz / 20~MHz & 20~MHz and 40~MHz & 20~MHz, 40~MHz, 80~MHz, 160~MHz and 80+80~MHz \\
+    \textbf{Antenna technology} & \gls{siso} & \gls{siso} & \gls{mimo} & \gls{mimo} / \gls{mumimo} \\
+    \textbf{Transmission technique} & \gls{dsss} & \gls{dsss} and \gls{ofdm} & \gls{ofdm} & \gls{ofdm} \\
+    \textbf{Maximum number of spatial streams} & 1 & 1 & 4 & 8 \\
+    \textbf{Beamforming-capable} & No & No & Yes & Yes \\
+    \bottomrule
+  \end{tabular}
+  \caption{Overview of IEEE 802.11 standards, adapted from: \cite[85]{Bejarano2013}}
+  \label{table:wlan}
+  \vspace{-1.5em}
+\end{table}
+
+\Cref{table:wlan} shows a comparison of the IEEE 802.11 standards. With IEEE 802.11ac the data rate massively increases. This is due to the modulation which is used by this standard and the ability to enable simultaneous multiple user connections. \footcite[Cf.][84--85]{Bejarano2013}
+
+\section{Wireless Campus Area Network}
+
+A \gls{wcan} is composed by connecting multiple \gls{wlan} across offices or throughout entire campus-like buildings. Because of the geographical area used by campuses, the \gls{wcan} sometimes uses \gls{wman} technologies to provide good wireless coverage over the campus area. The IEEE 802.11 and IEEE 802.16 standards are used for high data rate wireless networks with good indoor coverage. Using \gls{mimo} and \gls{mumimo} technology, the number of simultaneous connections of a wireless access point can be increased. \footcite[Cf.][]{Chen2009}
+
+\section{Wireless Metropolitan Area Network}
+
+The increasing demand for high data rate wireless transmissions in urban and sub-urban areas, requires new technologies. Covered by the IEEE 802.16 family of standards, the \gls{wman} has a geographical coverage of operation of about 10 km. IEEE 802.16 based technologies are used to operate large-scale networks across cities.\footcite[Cf.][713]{Garg2007} The IEEE 802.16 standard is called \gls{wimax}.\footcite[Cf.][1]{Kirmse2009} The \gls{wimax} protocol family allows up to 64,000 simultaneous connections per access point. Two types of \gls{bwa} services are currently available: \footcite[Cf.][195--249]{Ephremides2013}
+
+\begin{itemize}
+  \item Fixed Broadband: This type attempts to provide the same services as traditional wired broadband connections (e.g. \gls{dsl} or cable modems).
+  \item Mobile Broadband: Nomadicity and mobility are the features of this type of \gls{bwa} services type. Nomadicity is the ability to connect to the \gls{bwa} base station from different locations within the coverage range of a \gls{bwa} base station. Mobility describes the feature of keeping connections to the \gls{wman} active while moving.
+\end{itemize}
+
+In 2011 the \gls{wimax} Forum had stated a number of 583 \gls{wimax} installations in over 150 countries worldwide. \footcite[Cf.][246]{Ephremides2013}
+
+\section{Wireless Wide Area Network}
+
+The standards defining technologies for \gls{wwan} are typically based on cellular network topologies. A \gls{wwan} covers a geographical range of up to 10km. Technologies in \gls{wwan} are typical 2G and 3G systems: \footcite[Cf.][402--403]{Ephremides2013}
+
+\begin{itemize}
+  \item \gls{gsm} (2G): The \gls{gsm} standard is based on \gls{tdma} and can achieve data rates up to 1 Mbps using \gls{edge} technology.
+  \item \gls{umts} (3G): This standard is based in the \gls{cdma} and provides up to 42 Mbps data transfer rates when \gls{hspa+} can be used.
+\end{itemize}
+
+The IEEE 802.16 standard defines a mobile broadband technology called Mobile \gls{wimax} which is a fully compliant 3G system at data rates up to 80 Mbps.\footcite[Cf.][2-3]{Kirmse2009} The main difference to the fixed type \gls{wimax} is the support for mobile devices, such as mobile phones, tablets or laptop computers. Embedded Mobile \gls{wimax} solutions or Mobile \gls{wimax} extension cards have to be used in conjunction with omni-directional antennas. \footcite[Cf.][3--4]{Kirmse2009}
+
+\section{Wireless Regional Area Network}
+
+The IEEE 802.22 working group defines standards for cognitive radio-based PHY/MAC/air interfaces for the use in \gls{wran}, which have a typical geographical coverage of 100km. Their target is to provide \gls{bwa} with data rates up to 1.5 Mbps to areas with sparse Internet access. The spectrum of IEEE 802.22 is located in the TV Broadcasting 54 MHz to 862 MHz band. \footcite[Cf.][2]{Romme2008}
+
+\section{Wireless Global Area Network}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[
+  width=10cm,
+  ]{images/all_ip_network}
+  \caption{Overview of the all-ip-network architecture of Smart Grids, source: \cite{mulligan}}
+  \label{fig:all_ip}
+\end{figure}
+
+The \gls{wgan} consists of satellite-based transmission systems spanning around the world at the near-earth orbit. Additionally, the upcoming 5G wireless network standards will provide wireless communication globally. It tends to create a \gls{wwww}. Based on technologies like \gls{cdma}, \gls{ofdm}, \gls{uwb} and IPv6, it will provide All-IP wireless network systems. \Cref{fig:all_ip} gives an overview of the architecture of future All-IP wireless networking. The network is clustered into smaller Smart Grids which provide local network access and allow a hand-off of active connections through Smart Grids. \footcite[Cf.][]{Lin2005}

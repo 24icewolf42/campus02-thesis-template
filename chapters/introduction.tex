@@ -1,0 +1,53 @@
+\chapter{Introduction}
+\label{ch:intro}
+
+The operational area of wireless networking technologies is expanding vast. Due to new products, applications and services, the rate of diffusion will keep growing over the next decade. According to the \gls{itu} \gls{ict} Facts and Figures, around 96.8 percent of the world's population have an active mobile telephone subscription. \Cref{fig:global-ict-development} shows an overview of the global \gls{ict} developments from 2001 to 2015. The number of wireless devices has increased exponentially. \footcite[Cf.][]{ictstats2015}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[
+    width=\textwidth,
+  ]{images/ITU_stats_2015}
+  \caption{Global ICT development, source: \cite{ictstats2015}}
+  \label{fig:global-ict-development}
+\end{figure}
+
+\gls{ict} is an important part of modern day business. Our relationships span world-wide using \gls{sms}, such as Facebook or LinkedIn. Additionally, the machines we are using every day are already creating their own \gls{ict} network, the \gls{iot}. The \gls{iot} is offering a vast amount of opportunities for new products and services, especially to the Smart Home market.
+
+The modern art of living is an emerging market for smartness in our homes. Today, around 5 million households in Europe have installed Smart Home systems. This number will increase over 30 million by the end of this decade. \footcite[Cf.][]{berg2015}
+
+\gls{rtd} engineers are challenged to create the products and services to fulfill the requirements of a Smart Home. A wide range of networking standards, protocols and technologies were developed to meet certain requirements. Especially technical product managers and \gls{rtd} engineers of the \gls{ict} industry are the target audience of this thesis.
+
+This thesis will introduce the requirements of modern Smart Homes and outline the key wireless networking technologies available for personal networks in Smart Homes. The information is based on data from various sources, such as articles, research papers and books. Finally, this thesis present a guidance for selecting these networking technologies for energy efficient Smart Home applications.
+
+\section{Background and Challenges}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[
+    width=\textwidth,
+  ]{images/smart_home_scenario}
+  \caption{Wireless network scenario in a Smart Home environment, source: Own diagram}
+  \label{fig:scenario}
+\end{figure}
+
+To explain the significance of a guidance in energy efficient wireless networking in Smart Homes, this thesis uses a simple scenario of a wireless network as shown in \cref{fig:scenario}. The device nodes A, B, C, D and E communicate with each other over the wireless links L1 to L5. Even in this simple scenario it is difficult for an \gls{rtd} engineer to choose the right wireless networking technology. Each wireless link addresses a specific task within a Smart Home environment. This thesis will try to capture the requirements for these tasks and match the wireless networking technologies to them.
+
+Based on this simple scenario, the following research question can be posed:
+\textit{What are the key differences of wireless personal area networking technologies for selection in low-power Smart Home Applications?}
+
+\section{Scope and Outline of this Thesis}
+
+\newcounter{PartOfThesis}
+\newcommand{\PartOfThesis}{\stepcounter{PartOfThesis}\Roman{PartOfThesis}\hspace{.3em}}
+
+The outline and flow of the thesis are shown in \cref{fig:outline}. Part \PartOfThesis includes \crefrange{ch:intro}{ch:smart-home}. \Cref{ch:intro} presents the introduction, background and outline of this thesis. \Cref{ch:wireless-networking} introduces to the various wireless network types, from the body-near networks to satellite-based systems. In \cref{ch:smart-home}, this thesis describes the organization, types and tasks of networks within a Smart Home. Part \PartOfThesis starts in \cref{ch:wpan} with an in-depth overview of essential wireless networking technologies used in Smart Homes. The key parameters for further evaluation are discussed in \cref{ch:key-params}. The thesis poses a guidance based on the gathered information in \cref{ch:eval}. Finally, in \cref{ch:conclusion} the thesis will be concluded. Open research problems will be presented, that still need to be solved to have a comprehensive development guide for energy efficient Smart Home applications.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[
+    width=12cm,
+  ]{images/graphical_frame_of_reference}
+  \caption{Flow of the thesis, source: Own diagram}
+  \label{fig:outline}
+\end{figure}

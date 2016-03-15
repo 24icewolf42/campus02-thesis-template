@@ -1,0 +1,361 @@
+% !TEX program = xelatex
+% !TEX builder = latexmk
+% !Mode:: "TeX:UTF-8:Hard"
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% BAC01
+%%
+%% Andreas Landgraf (2015)
+%%
+%% see "How to Write a Thesis in LaTeX"
+%%     https://www.sharelatex.com/blog/2013/08/02/thesis-series-pt1.html
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\campusSubject{BACHELOR THESIS}
+\def\campusTitle{Analysis and Comparison of Wireless Personal Area Networking Technologies for low-power Smart Home Applications}
+\def\campusAuthor{Andreas Landgraf}
+\def\campusPersKnz{1310317046}
+\def\campusCity{Graz}
+\def\campusDate{\today}
+\def\campusKeywords{WPAN, Smart Home, Bluetooth, Bluetooth Smart, UWB, ZigBee, 6LoWPAN, Wi-Fi, 802.11ad}
+
+\documentclass[
+  headexclude,
+  footexclude,
+  10pt,
+  a4paper,
+  oneside,
+  captions=tableheading,
+  bibliography=totoc,
+  listof=totoc
+]{scrbook}
+
+\RequirePackage[
+  automark,
+  headsepline
+]{scrlayer-scrpage}
+
+\RequirePackage{geometry}
+\RequirePackage{layouts}
+\RequirePackage{calc}
+\RequirePackage{setspace}
+\RequirePackage{titlesec}
+\RequirePackage[austrian,american]{babel}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{fontspec}
+\RequirePackage[hyphens]{url}
+\RequirePackage{csquotes}
+\RequirePackage{amsmath,amsthm,amssymb}
+\RequirePackage{color}
+\RequirePackage[dvipsnames,svgnames,table]{xcolor}
+\RequirePackage{booktabs}
+\RequirePackage{textcomp}
+\RequirePackage{graphicx}
+\RequirePackage{tabularx}
+\RequirePackage{multirow}
+\RequirePackage[font=small,format=hang,labelfont=bf]{caption}
+\RequirePackage{subcaption}
+\RequirePackage[colorinlistoftodos,obeyDraft]{todonotes}
+\RequirePackage[toc,acronym,style=long,nonumberlist]{glossaries}
+
+\RequirePackage[
+  backend=biber,
+  style=campus02,
+  natbib=true,
+  sorting=nty,
+  sortlocale=en_US,
+  autocite=footnote,
+  related=true,
+  backref=false,
+  hyperref=auto,
+  isbn=false,
+  url=false,
+  citereset=none,
+  maxcitenames=3,
+  maxbibnames=100,
+  block=none,
+  citecounter=true,
+]{biblatex}
+
+\RequirePackage{enumitem}
+
+\RequirePackage{footnote}
+\RequirePackage[multiple]{footmisc}
+\RequirePackage{chngcntr}
+
+\RequirePackage[
+  pdftitle={\campusTitle},
+  pdfauthor={\campusAuthor},
+  pdfsubject={\campusSubject, \campusDate},
+  pdfkeywords={\campusKeywords},
+  pdffitwindow=true,
+  pdfpagelayout={OneColumn},
+  bookmarks=true,
+  bookmarksnumbered=true,
+  bookmarksopen=true,
+  hyperindex=true,
+  colorlinks=false,
+  linkcolor=black,
+  urlcolor=black,
+  citecolor=black,
+  unicode=true,
+  hidelinks,
+  hyperfootnotes=false
+]{hyperref}
+\RequirePackage{nameref}
+\RequirePackage{cleveref}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliographies
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\counterwithout{footnote}{chapter}
+
+\DeclareLanguageMapping{american}{american-apa}
+\NewBibliographyString{retrieved}
+\NewBibliographyString{from}
+\DefineBibliographyStrings{american}{
+  retrieved = {},
+  from = {},
+}
+
+\addbibresource{literature/mendeley.bib}
+\addbibresource{literature/internet.bib}
+
+\defbibfilter{printed}{
+  \type{book} \or
+  \type{phdthesis} \or
+  \type{article} \or
+  \type{incollection} \or
+  \( \type{techreport} \and \not \keyword{RFC4944} \) \or
+  \type{inproceedings}
+}
+
+\defbibfilter{online}{
+  \type{online} \or
+  \( \type{techreport} \and \keyword{RFC4944} \)
+}
+
+\newenvironment{bibhyphenation}
+{\hyphenpenalty=20
+  \tolerance=9999
+  \exhyphenpenalty=0
+  \linepenalty=0
+  \setlength{\emergencystretch}{3em}}
+{}
+
+\crefname{table}{table}{tables}
+\Crefname{table}{Table}{Tables}
+\crefname{figure}{figure}{figures}
+\Crefname{figure}{Figure}{Figures}
+\crefname{section}{section}{sections}
+\Crefname{section}{Section}{Sections}
+\crefname{chapter}{chapter}{chapters}
+\Crefname{chapter}{Chapter}{Chapters}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\geometry{
+  left=2.5cm,
+  right=2cm,
+  top=2.5cm,
+  bottom=2.2cm,
+}
+
+\graphicspath{{images/}}
+\setmainfont{Arial}
+
+\makeglossaries
+
+\input{acronyms}
+
+\renewcommand*{\glspostdescription}{}
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+\clubpenalty = 10000
+\widowpenalty = 10000
+\displaywidowpenalty = 10000
+
+\frenchspacing
+\renewcommand{\singlespacing}{\setstretch{1.09}}
+\renewcommand{\onehalfspacing}{\setstretch{1.45}}
+\singlespacing
+\newlength{\singlebaselineskip}
+\setlength{\singlebaselineskip}{\baselineskip}
+\onehalfspacing
+\renewcommand{\arraystretch}{1.09}
+\addtokomafont{sectioning}{\setstretch{1}\selectfont}
+
+\renewcommand*{\chapterheadstartvskip}{\vspace*{4mm}}
+\renewcommand*{\chapterheadendvskip}{\vspace*{0mm}}
+
+\titlespacing*{\section}{0mm}{4mm}{0mm}
+\titlespacing*{\subsection}{0mm}{4mm}{0mm}
+
+\setlength{\parskip}{3mm}
+\setlength{\itemsep}{1em}
+
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+
+% clear header and footer
+\clearscrheadfoot
+\ihead[]{\leftmark}
+\chead[]{}
+\ohead[]{}
+\ifoot[]{}
+\cfoot[]{}
+\ofoot[]{\thepage}
+
+\setkomafont{title}{\fontspec{Arial}\Large\bfseries}
+\setkomafont{pageheadfoot}{\fontspec{Arial}\normalsize}
+\setkomafont{chapter}{\fontspec{Arial}\Large\bfseries}
+\setkomafont{section}{\fontspec{Arial}\Large\bfseries}
+\setkomafont{subsection}{\fontspec{Arial}\large\bfseries}
+\setkomafont{chapterentry}{\fontspec{Arial}\bfseries}
+\addtokomafont{chapter}{\MakeUppercase}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand*{\maketitle}{
+  \clearpage
+  \thispagestyle{empty}
+  \null
+  \begin{center}
+    {\textbf{\campusSubject} \par}
+    \vskip 2.5em
+    {\hrule\vskip 2em \titlefont\huge\campusTitle\vspace*{1em}\hrule\vspace*{1.5em}\par}
+    {accomplished at \par}
+    \vskip .6em
+    {\parbox[c]{6.6cm}{\includegraphics[width=6.6cm]{images/Campus02_Logo.pdf}} \par}
+    \vskip .1em
+    {FACHHOCHSCHULE DER WIRTSCHAFT \par}
+    \vskip 2em
+    {Bachelor Degree Programme \\ Innovation Management \par}
+    \vskip 2em
+    {by \\ {\Large \textbf{\campusAuthor}} \\ \campusPersKnz \par}
+    \vskip 2em
+    {supervised and reviewed by \par}
+    {\normalsize Dipl.-Ing. Manuela Reinisch \\ FH-Prof. Dipl.-Ing. Dr.techn. Michael Terler \par}
+    \vfill
+    {
+      \begin{flushleft}
+        \hfill\parbox[c]{7.3cm}{\includegraphics[width=5cm]{images/Signature}}
+        \begin{tabular}{lclcl}
+          {\campusCity, \campusDate} & ~\hfill & \hspace*{3cm} & ~\hfill &  \underline{\hspace*{5cm}} \\
+          ~\hfill & ~ &   & ~ &  \multicolumn{1}{c}{Signature}   \\
+        \end{tabular}
+      \end{flushleft}
+    }
+  \end{center}
+  \par
+}
+
+
+\begin{document}
+
+\frontmatter
+
+\renewcommand*{\chapterpagestyle}{scrplain}
+\pagestyle{scrplain}
+
+% allow more flexible whitespaces to avoid hyphenation and overfull hboxes
+\sloppy
+
+\begin{titlepage}
+
+\subject{\campusSubject}
+\title{\campusTitle}
+
+\author{\bfseries \campusAuthor}
+\date{\campusCity, \campusDate}
+
+\maketitle
+
+\end{titlepage}
+\newpage
+
+\chapter*{Ehrenwörtliche Erklärung}
+
+\begin{otherlanguage}{austrian}
+Ich erkläre ehrenwörtlich, dass ich die vorliegende Arbeit selbstständig und ohne fremde Hilfe verfasst, andere als die angegebenen Quellen nicht benützt und die benutzten Quellen wörtlich zitiert sowie inhaltlich entnommene Stellen als solche kenntlich gemacht habe.
+\end{otherlanguage}
+
+{
+  \begin{flushleft}
+    \vskip 2em
+    \hfill\parbox[c]{7.3cm}{\includegraphics[width=5cm]{images/Signature}}
+    \begin{tabular}{lclcl}
+      {\campusCity, \campusDate} & ~\hfill & \hspace*{3cm} & ~\hfill &  \underline{\hspace*{5cm}} \\
+      ~\hfill & ~ &   & ~ &  \multicolumn{1}{c}{Signature}   \\
+    \end{tabular}
+  \end{flushleft}
+}
+
+%\chapter*{Acknowledgement}
+
+%Firstly, I would like to express my sincere gratitude to the supernovae for the creation of all substantial atoms and molecules our fantastic world consists of. Their ephemeral power made it possible to form all known and unknown creatures and plants. Without this furtune it would not be possible to live this wunderful life. I thank my family for supporting me spiritually throughout my life and during writing this thesis.
+
+\chapter*{Abstract}
+
+Wireless networking technologies are widely used in communication devices and services in almost every area of daily business. Medical environments, security authorities, and other organizations use them to increase their performance. In particular the Smart Home sector is one of the areas that has been researched extensively. From ecological and technological point of view, the opportunities for new technologies are vast. Therefore, it is important to compare such technologies using ecological parameters. This thesis will give an overview of the wireless network types, ranging from body area to global area networks, and introduces the different Smart Home networks. Furthermore, the major wireless networking technologies of personal area networks, Bluetooth, Bluetooth Smart, Ultra Wideband, ZigBee, Internet Protocol version 6 over Low-Power Wireless Personal Area Network and Wi-Fi, are discussed in detail. A comparison is made with current chipset manufacturers implementations to create a tabular overview of these technologies and their suitability in Smart Home networks. Results show that every technology has its optimal field of application in a modern Smart Home. However, it can be concluded that further experiments will show more accurate results.
+
+\vspace{2cm}
+
+\textbf{Keywords:} \campusKeywords
+
+\chapter*{Zusammenfassung}
+
+\begin{otherlanguage}{austrian}
+Drahtlose Netzwerktechnologien zählen zum Rückgrad der Kommunikationseinrichtungen unseres täglichen Arbeitsalltags. In medizinischen Einrichtungen, Sicherheitsbehördern und anderen Organisationen werden diese Technologien zur Leistungssteigerung und zur Erhöhung der Effizienz eingesetzt. Zunehmend wird in letzter Zeit auch der Smart Home Sektor Ziel intensiver Forschung im Bereich der Netzwerktechnologien. Aus ökologischer und technologischer Sicht ergeben sich Chancen für neue effizientere Technologien. Daher ist es wichtig, solche Technologien unter den Gesichtspunkten ökologischer Parameter zu vergleichen. Diese Arbeit gibt einen Überblick über die drahtlosen Netzwerktypen, die von körpernahen bis hin zu globalen Netzwerken reichen und erläutert die verschiedenen Smart Home Netzwerke. Aus dem Bereich der persönlichen Netzwerke werden die wichtigsten drahtlosen Netzwerktechnologien vorgestellt. Dabei werden Bluetooth, Bluetooth Smart, Ultra-Breitband, ZigBee, Internet Protocol Version 6 für Wireless Personal Area Network mit niedrigem Energieverbrauch und Wi-Fi ausführlich diskutiert. Ein Vergleich mit Implementierungen von Chip-Herstellern führt zu einer tabellarischen Übersicht dieser Technologien und schafft die Grundlage für die Beurteilung der Eignung in Smart Home Netzwerken. Die Ergebnisse zeigen, dass jede Technologie ihr optimales Einsatzgebiet in einem modernen Smart Home hat. Es kann jedoch der Schluss gezogen werden, dass künftige Experimente zur Eignung dieser Technologien im Smart Home diese Beurteilung vervollständigen können.
+\end{otherlanguage}
+
+\vspace{2cm}
+
+\textbf{Keywords:} \campusKeywords
+
+\mainmatter
+
+\pagenumbering{roman}
+\setcounter{page}{1}
+
+\pagestyle{scrheadings}
+\setlength{\parindent}{0em}
+\renewcommand*{\chapterpagestyle}{scrheadings}
+
+\tableofcontents
+
+\clearpage
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\input{chapters/introduction}
+\input{chapters/chapter02}
+\input{chapters/chapter03}
+\input{chapters/chapter04}
+\input{chapters/chapter05}
+\input{chapters/chapter06}
+\input{chapters/conclusion}
+
+% uncomment to include all literature sources
+%\nocite{*}
+
+\clearpage
+
+\ihead[]{References}
+\printbibheading[heading=bibintoc, title=References]
+\begin{bibhyphenation}
+  \printbibliography[heading=subbibintoc, title=Bibliography, filter={printed}]
+  \printbibliography[heading=subbibintoc, title=Webography, filter={online}]
+\end{bibhyphenation}
+
+\clearpage
+
+\ihead[]{\leftmark}
+\listoffigures
+\listoftables
+\printglossary[type=\acronymtype]
+
+\end{document}

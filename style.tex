@@ -1,0 +1,642 @@
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Customize style %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+%% Colors
+
+% color of headings
+%\definecolor{sectioncolor}{RGB}{0, 51, 153} % blue
+%\definecolor{sectioncolor}{RGB}{0, 25, 152} % darker blue
+\definecolor{sectioncolor}{RGB}{0, 0, 0}     % black
+
+% color for PDF generation
+\definecolor{pdfanchorcolor}{rgb}{0,0,0}
+\definecolor{pdfmenucolor}{rgb}{0,0,0}
+\definecolor{pdfruncolor}{rgb}{0,0,0}
+\definecolor{pdfurlcolor}{rgb}{0,0,0}
+\definecolor{pdffilecolor}{rgb}{0,0,0}
+\definecolor{pdflinkcolor}{rgb}{0,0,0}
+\definecolor{pdfcitecolor}{rgb}{0,0,0}
+
+% table colors 
+\colorlet{tablebodycolor}{white!100}
+\colorlet{tablerowcolor}{gray!10}
+\colorlet{tablesubheadcolor}{gray!30}
+\colorlet{tableheadcolor}{gray!25}
+
+%% Science
+
+% setup SI units
+\sisetup{%
+  mode = math, % text is printed using a math font
+  detect-all,
+  separate-uncertainty=true,
+}
+
+%% Diagrams
+
+% tikz/pgf setup for diagrams
+\pgfplotsset{width=0.8\textwidth,compat=1.5.1}
+
+%% Text
+
+% options for enumerations
+\setlist{itemsep=0pt}
+
+%% Footnotes
+
+% separation text to footnote
+\addtolength{\skip\footins}{\baselineskip}
+
+% printed text between multible footnotes
+\renewcommand*{\multfootsep}{,\nobreakspace}
+
+% Limit space of footnotes to 10 lines
+\setlength{\dimen\footins}{10\baselineskip}
+
+% prevent continuation of footnotes 
+% at facing page
+\interfootnotelinepenalty=10000
+
+%% Quotes
+
+% All facilities which take a 'cite' argument will not insert
+% it directly. They pass it to an auxiliary command called \mkcitation
+% which  may be redefined to format the citation.
+\renewcommand*{\mkcitation}[1]{{\,}#1}
+\renewcommand*{\mkccitation}[1]{ #1}
+
+\SetBlockThreshold{2} % Number of Lines at which a blockquote is separated
+                      % from the text.
+
+%% Citations / Style of Bibliography
+
+\ExecuteBibliographyOptions{%
+%--- Sorting --- --- ---
+	sorting=nty, % Sort by name, title, year.
+                 % other options: 
+                 % nty        Sort by name, title, year.
+                 % nyt        Sort by name, year, title.
+                 % nyvt       Sort by name, year, volume, title.
+                 % anyt       Sort by alphabetic label, name, year, title.
+                 % anyvt      Sort by alphabetic label, name, year, volume, title.
+                 % ynt        Sort by year, name, title.
+                 % ydnt       Sort by year (descending), name, title.
+                 % none       Do not sort at all. All entries are processed in citation order.
+                 % debug      Sort by entry key. This is intended for debugging only.
+                 %
+	sortcase=true,
+	sortcites=true, % do/do not sort citations according to bib	
+%--- Dates --- --- ---
+	date=comp,  % (short, long, terse, comp, iso8601)
+%	origdate=
+%	eventdate=
+%	urldate=
+%	alldates=
+	datezeros=true, %
+	dateabbrev=true, %
+%--- General Options --- --- ---
+%	maxnames=1,
+%	minnames=1,
+	maxbibnames=15,%
+	maxcitenames=1,%
+	uniquename=true,% (biber only)
+	maxalphanames=1,% (biber only)
+%	autocite= % (plain, inline, footnote, superscript) 
+	autopunct=true,
+	language=auto,
+	block=none, % (none, space, par, nbpar, ragged)
+	notetype=foot+end, % (foot+end, footonly, endonly)
+	hyperref=true, % (true, false, auto)
+	backref=true,
+	backrefstyle=three, % (none, three, two, two+, three+, all+)
+	backrefsetstyle=setonly, %
+	indexing=false, % 
+                    % options:
+                    % true       Enable indexing globally.
+                    % false      Disable indexing globally.
+                    % cite       Enable indexing in citations only.
+                    % bib        Enable indexing in the bibliography only.
+	refsection=none, % (part, chapter, section, subsection)
+	refsegment=none, % (none, part, chapter, section, subsection)
+	abbreviate=true, % (true, false)
+	defernumbers=true,
+	punctfont=false,
+	arxiv=abs, % (ps, pdf, format)	
+%--- Style Options --- --- ---	
+% The following options are provided by the standard styles
+	isbn=false,
+	url=false,
+	doi=false,
+	eprint=false,
+}
+
+% the number is not used in the bibliography, nor
+% the citations, but for the list of publications
+% we want numbers to be available.
+\ExecuteBibliographyOptions{labelnumber}
+
+% change alpha label to be without +	
+\renewcommand*{\labelalphaothers}{}
+
+% change 'In: <magazine>" to "<magazine>"
+\renewcommand*{\intitlepunct}{}
+\DefineBibliographyStrings{german}{in={}}
+\DefineBibliographyStrings{english}{in={}}
+
+% make names capitalized \textsc{}
+\renewcommand{\mkbibnamefirst}{\textsc}
+\renewcommand{\mkbibnamelast}{\textsc}
+
+% make volume and number look like 
+% 'Bd. 33(14): '
+\renewbibmacro*{volume+number+eid}{
+  \setunit{\addcomma\space}
+  \bibstring{volume} 
+  \setunit{\addspace}
+  \printfield{volume}
+  \iffieldundef{number}{}{
+   \printtext[parens]{
+     \printfield{number}
+   }
+  }
+  \setunit{\addcomma\space}
+  \printfield{eid}
+}
+
+% <authors>: <title>
+\renewcommand*{\labelnamepunct}{\addcolon\space}
+
+% make ': ' before pages
+\renewcommand*{\bibpagespunct}{\addcolon\space}
+
+% move date before issue
+\renewbibmacro*{journal+issuetitle}{
+  \usebibmacro{journal}
+  \setunit*{\addspace}
+  \iffieldundef{series}
+    {}
+    {
+      \newunit
+      \printfield{series}
+      \setunit{\addspace}
+    }
+  \usebibmacro{issue+date}
+  \setunit{\addcolon\space}
+  \usebibmacro{issue}
+  \setunit{\addspace}
+  \usebibmacro{volume+number+eid}
+  \newunit
+}
+
+% print all names, even if maxnames = 1
+\DeclareCiteCommand{\citeauthors}
+{
+  \defcounter{maxnames}{1000}
+  \boolfalse{citetracker}
+  \boolfalse{pagetracker}
+  \usebibmacro{prenote}}
+  {\ifciteindex
+    {\indexnames{labelname}}
+    {}
+  \printnames{labelname}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}
+}
+
+\KOMAoptions{
+   bibliography=openstyle
+}
+
+%% Figures, Placement and Floats
+
+% Space above and below the image
+\setlength{\intextsep}{0.5\baselineskip}
+
+% Make float placement easier
+\renewcommand{\floatpagefraction}{.75} % previous: .5
+\renewcommand{\textfraction}{.1}       % previous: .2
+\renewcommand{\topfraction}{.8}        % previous: .7
+\renewcommand{\bottomfraction}{.5}     % previous: .3
+\setcounter{topnumber}{3}        % previous: 2
+\setcounter{bottomnumber}{2}     % previous: 1
+\setcounter{totalnumber}{5}      % previous: 3
+
+%% Captions
+
+% Style of captions
+\DeclareCaptionStyle{captionStyleTemplateDefault}
+[ % single line captions
+  justification = centering
+]
+{ % multiline captions
+% -- Formatting
+  format    = plain,  % plain, hang
+  indention  = 0em,   % indention of text 
+  labelformat = default,% default, empty, simple, brace, parens
+  labelsep   = colon,  % none, colon, period, space, quad, newline, endash
+  textformat  = simple, % simple, period
+% -- Justification
+  justification = justified, % RaggedRight, justified, centering
+  singlelinecheck = true, % false (true=ignore justification setting in 
+                          % single line)
+% -- Fonts
+  labelfont  = {small,bf},
+  textfont   = {small,rm},
+  % valid values:
+  % scriptsize, footnotesize, small, normalsize, large, Large
+  % normalfont, ip, it, sl, sc, md, bf, rm, sf, tt
+  % singlespacing, onehalfspacing, doublespacing
+  % normalcolor, color=<...>
+  %
+% -- Margins and further paragraph options
+  margin = 10pt, %.1\textwidth,
+  % width=.8\linewidth,
+% -- Skips
+  skip    = 10pt, % vertical space between the caption and the figure
+  position = auto, % top, auto, bottom
+% -- Lists
+  % list=no, % suppress any entry to list of figure 
+  listformat = subsimple, % empty, simple, parens, subsimple, subparens
+% -- Names & Numbering
+  % figurename = Abb. %
+  % tablename  = Tab. %
+  % listfigurename=
+  % listtablename=
+  % figurewithin=chapter
+  % tablewithin=chapter
+%-- hyperref related options
+  hypcap=true, % (true, false) 
+  % true=all hyperlink anchors are placed at the 
+  % beginning of the (floating) environment
+  %
+  hypcapspace=0.5\baselineskip
+}
+
+% apply caption style
+\captionsetup{
+  style = captionStyleTemplateDefault % base
+}
+
+% Predefinded skip setup for different floats
+\captionsetup[table]{position=top}
+\captionsetup[figure]{position=bottom}
+\captionsetup[sub]{
+  style=captionStyleTemplateDefault, % base
+  labelfont={footnotesize,bf},
+  textfont={footnotesize,rm},
+  justification=RaggedRight, % RaggedRight, justified, centering
+  skip=6pt,
+  margin=5pt,
+  labelformat=simple, % default, empty, simple, brace, parens
+  labelsep=space,
+  list=false,
+  hypcap=false
+}
+% make subcaptions be referenced as 5.3(b)
+\renewcommand\thesubfigure{(\alph{subfigure})} 
+\captionsetup[subfloat]{
+  style=captionStyleTemplateDefault, % base
+  skip=6pt,
+  margin=5pt,
+  labelformat=parens, % default, empty, simple, brace
+  labelsep=space,
+  list=false,
+  hypcap=false
+}
+
+%% Table
+
+% Define new column types only if they are not yet defined
+
+\tabulinesep=5pt
+
+%% centered (Z):
+\IfColumntypeDefined{Z}{}
+  {\newcolumntype{Z}{>{\Centering\arraybackslash\hspace{0pt}}X}}
+%% right (X):
+\IfColumntypeDefined{Y}{}
+  {\newcolumntype{Y}{>{\RaggedLeft\arraybackslash\hspace{0pt}}X}}
+%% left (X):
+\IfColumntypeDefined{W}{}
+  {\newcolumntype{W}{>{\RaggedRight\arraybackslash\hspace{0pt}}X}}
+%% left (p):
+\IfColumntypeDefined{L}{}
+  {\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash\hspace{0pt}}p{#1}}}
+%% right (p):
+\IfColumntypeDefined{R}{}
+  {\newcolumntype{R}[1]{>{\RaggedLeft\arraybackslash\hspace{0pt}}p{#1}}}
+%% centered (p):
+\IfColumntypeDefined{C}{}
+  {\newcolumntype{C}[1]{>{\Centering\arraybackslash\hspace{0pt}}p{#1}}}
+
+%% layout:  Paragraph =================================
+
+% Paragraph Separation
+\KOMAoptions{
+   parskip=absolute, % do not change indentation according to fontsize
+   parskip=false     % indentation of 1em
+}
+
+%% layout:  line spacing =================================
+
+%\onehalfspacing    % 1,5-times spacing
+%\doublespacing     % 2-times spacing
+
+%% layout:  page layout =================================
+
+\raggedbottom     % allow variable (ragged) site heights
+
+% Page Layout Options
+\KOMAoptions{
+  DIV=16, % Size of Text Body, higher values = greater textbody
+  headlines=2.1,
+  cleardoublepage=empty, % plain, headings
+  BCOR=10mm, % (binding correction)
+  % twoside=true, % two side layout (alternating margins, standard in books)
+  twoside=false, % single side layout 
+  % twoside=semi, % two side layout (non alternating margins!)
+  twocolumn=false,
+  headinclude=false,
+  footinclude=false,
+  mpinclude=false,   
+  headsepline=true,
+  footsepline=false,
+  titlepage=true % separate page for title
+}
+
+% reloading of typearea, necessary if setting of spacing changed 
+\typearea[current]{last}
+
+%% head and foot lines
+
+\IfElseDefined{chapter}{
+   \pagestyle{scrheadings} % pages with header
+}{
+   \pagestyle{scrplain} % pages without header but page numbers
+}
+
+% delete predefined styles
+\clearscrheadings
+\clearscrplain
+
+\IfElseDefined{chapter}{
+  \ohead{\headmark} % header outside: chapter and section titles
+  \ofoot[\pagemark]{} % footer outside: page numbers
+}{
+  \ohead{\headmark} % header outside: chapter and section titles
+  \ofoot[\pagemark]{} % footer outside: page numbers
+}
+
+% Shown sections in the header
+\IfElseDefined{chapter}{
+   \automark[section]{chapter} %[right]{left}
+}{
+   \automark[subsection]{section} %[right]{left}
+}
+
+% Lines
+\IfDefined{chapter}{
+   % \setheadtopline{} % configures the line above the header
+   \setheadsepline{.4pt}[\color{black}] % configures the line below the header
+   % \setfootsepline{} % configures the line above the footer
+   % \setfootbotline{} % configures the line below the footer
+}
+
+% width of head and foot
+\setheadwidth[0pt]{text}
+\setfootwidth[0pt]{text}
+
+%% headings / page opening
+
+% depth of sections numbering
+\setcounter{secnumdepth}{2}
+
+\KOMAoptions{
+%%%% headings
+   headings=small,  % Small Font Size, thin spacing above and below
+   % headings=normal, % Medium Font Size, medium spacing above and below
+   % headings=big, % Big Font Size, large spacing above and below
+   %
+%%% Add/Dont/Auto Dot behind section numbers 
+   % numbers=autoenddot,
+   % numbers=enddot,
+   numbers=noenddot,
+}
+
+\IfDefined{chapter}{
+   \KOMAoptions{
+      headings=noappendixprefix, % chapter in appendix as in body text
+      headings=nochapterprefix,  % no prefix at chapters
+      % headings=appendixprefix,   % inverse of 'noappendixprefix'
+      % headings=chapterprefix,    % inverse of 'nochapterprefix'
+      % headings=openany,   % Chapters start at any side
+      % headings=openleft,  % Chapters start at left side
+      headings=openright, % Chapters start at right side      
+   }
+}
+
+% headings left aligned and ragged
+\renewcommand*{\raggedsection}{\raggedright} 
+
+%% fonts of headings
+
+% Default font for sections
+\newcommand\SectionFontStyle{\sffamily}
+
+\IfDefined{chapter}{
+   \setkomafont{chapter}{\Large\SectionFontStyle}    % Chapter
+}
+
+\setkomafont{sectioning}{\SectionFontStyle}
+\setkomafont{paragraph}{\rmfamily\itshape} 
+\setkomafont{subparagraph}{\rmfamily}
+
+\setkomafont{descriptionlabel}{\itshape}
+
+\setkomafont{part}{\usekomafont{sectioning}\LARGE}
+\setkomafont{partnumber}{\usekomafont{sectioning}\Huge}
+
+\setkomafont{pageheadfoot}{\normalfont\normalcolor\small\sffamily}
+\setkomafont{pagenumber}{\normalfont\sffamily\fontshape{b}\selectfont}
+
+%% layout of headings
+
+%--> chapter with 'chapter' + number + rule + name + rule
+% --------------------------------
+\titleformat{\chapter}[display]               % {command}[shape]
+  {\usekomafont{chapter}\Large \color{black}} % format
+  {\LARGE\MakeUppercase{\chaptertitlename}    % label
+   \Huge~\thechapter \filright}
+  {1pt}										  % sep (from chapternumber)
+  {
+   \titlerule \vspace{0.9pc}
+   \filright 
+   \IfColorDefined{sectioncolor}{\color{sectioncolor}}{}   
+  }                                           % (before chaptertitle and after)
+  [\color{black} \vspace{0.9pc} \filright {\titlerule}]
+% --------------------------------
+
+%--> part with 'PART' + number at frame and name inside frame
+% --------------------------------
+\titleformat{\part}[frame]
+  {\usekomafont{part}\Large\color{black}\centering}    % format
+  % label: PART I
+  {\enspace \LARGE\MakeUppercase{\partname}
+     \centering \Huge~\thepart \enspace }
+  % sep (from partnumber)
+  {1.5\baselineskip}
+  % (before chaptertitle and after)
+  {\IfColorDefined{sectioncolor}{\color{sectioncolor}}{}
+  \filcenter}
+% --------------------------------
+
+% spacing before and after sections
+\titlespacing*{\section}{0pt}{*2.0}{*0.5}
+\titlespacing*{\subsection}{0pt}{*1.5}{*0.5}
+\titlespacing*{\subsubsection}{0pt}{*1.5}{*0.5}
+
+%% settings and layout of TOC, LOF
+
+\setcounter{tocdepth}{3} % Depth of TOC Display
+
+\KOMAoptions{
+   %%% Setting of 'Style' and 'Content' of TOC
+   % toc=left,
+   toc=indented,
+}
+
+% Define partial toc for part pages
+\newcommand{\PartialToc}[1]{
+    \thispagestyle{plain}
+    \startcontents[part]
+    \section*{\contentsname}
+    \printcontents[part]{}{0}{\setcounter{tocdepth}{#1}}
+}
+
+\newcommand{\fontTOC}{\rmfamily}
+
+%%% === Appereance of Lists of figures, tables etc.  ===
+\KOMAoptions{%
+   %%% Setting of 'Style' and 'Content' of Lists 
+   %%% (figures, tables etc)
+   % --- General List Style ---
+   % listof=left, % tabular styles
+   listof=indented, % hierarchical style
+   % --- Appearance of Lists in TOC
+   listof=notoc, % Lists are not part of the TOC
+   % listof=totoc, % add Lists to TOC without number
+   % listof=totocnumbered, % add Lists to TOC with number
+%%% index in toc
+   index=nottotoc, % index is not part of the TOC
+   % index=totoc, % add index to TOC without number
+%%% bib in toc
+   % bibliography=nottotoc, % Bibliography is not part of the TOC
+   % bibliography=totocnumbered, % add Bibliography to TOC with number
+   bibliography=totoc % add Bibliography to TOC without number
+}
+
+\hypersetup{
+%%% General options
+  ,draft=false, % all hypertext options are turned off
+  ,final=true   % all hypertext options are turned on
+  ,debug=false  % extra diagnostic messages are printed in the log file
+  ,hypertexnames=true % use guessable names for links
+  ,naturalnames=false % use LaTeX-computed names for links
+  ,setpagesize=true   % sets page size by special driver commands
+%%% Configuration options
+  ,raiselinks=true    % forces commands to reflect the
+                      % real height of the link 
+  ,breaklinks=true    % Allows link text to break across lines
+  ,pageanchor=true    % Determines whether every page is given an implicit
+                      % anchor at the top left corner. 
+  ,plainpages=false   % Forces page anchors to be named by the arabic
+                      % form of the page number, rather than the formatted form.
+%%% Extension options
+  ,linktocpage=true   % make page number, not text, be link on TOC, LOF and LOT
+  ,colorlinks=true    % Colors the text of links and anchors.
+}%
+\IfColorDefined{pdflinkcolor}{\hypersetup{%
+%%% Colors for links
+  ,linkcolor  =pdflinkcolor   % Color for normal internal links.
+  ,anchorcolor=pdfanchorcolor % Color for anchor text.
+  ,citecolor  =pdfcitecolor   % Color for bibliographical citations in text.
+  ,filecolor  =pdffilecolor   % Color for URLs which open local files.
+  ,menucolor  =pdfmenucolor   % Color for Acrobat menu items.
+  ,runcolor   =pdfruncolor    % Color for run links (launch annotations).
+  ,urlcolor   =pdfurlcolor    % color magenta Color for linked URLs.
+}}{}
+
+\hypersetup{%
+%%% PDF-specific display options
+  ,bookmarksopen=true     % If Acrobat bookmarks are requested, show them
+                          % with all the subtrees expanded.
+  ,bookmarksopenlevel=2   % level (\maxdimen) to which bookmarks are open
+  ,bookmarksnumbered=true %
+  ,bookmarkstype=toc      %
+%%% PDF display and information options
+  ,pdfpagemode=UseOutlines % Determines how the file is opening in Acrobat:
+                          %  UseNone, UseThumbs (show thumbnails),
+                          %  UseOutlines (show bookmarks), FullScreen,
+                          %  UseOC (PDF 1.5), and UseAttachments (PDF 1.6).
+                          %
+  ,pdfstartpage=1         % Determines on which page the PDF file is opened.
+  ,pdfstartview=FitV      % Set the startup page view
+  % options: (same for pdfview, pdfremotestartview)
+  %  Fit   Fits the page to the window.
+  %  FitH  Fits the width of the page to the window.
+  %  FitV  Fits the height of the page to the window.
+  %  FitB  Fits the page bounding box to the window.
+  %  FitBH Fits the width of the page bounding box to  the window.
+  %  FitBV Fits the height of the page bounding box to the window.
+  ,pdfremotestartview=Fit % Set the startup page view of remote PDF files
+  ,pdfcenterwindow=false  %
+  ,pdffitwindow=false     % resize document window to fit document size
+  ,pdfnewwindow=false     % make links that open another PDF file 
+                          % start a new window
+  % options:
+  %  SinglePage     Displays a single page; advancing flips the page
+  %  OneColumn      Displays the document in one column; continuous scrolling.
+  %  TwoColumnLeft  Displays the document in two columns, 
+  %                 odd-numbered pages to the left.
+  %  TwoColumnRight Displays the document in two columns, 
+  %                 odd-numbered pages to the right.
+  %  TwoPageLeft    Displays two pages, odd-numbered pages to the left 
+  %  TwoPageRight   Displays two pages, odd-numbered pages to the right 
+  %
+  ,pdfdisplaydoctitle=true  % display document title instead of file name 
+}
+
+% Define frontmatter, mainmatter and backmatter if not defined
+% because this template shall compile in any koma script class
+\makeatletter
+\@ifundefined{frontmatter}{%
+   \newcommand{\frontmatter}{%
+      % (i, ii, iii)
+      \pagenumbering{roman}
+   }
+}{}
+\@ifundefined{mainmatter}{%
+   % scrpage2 benoetigt den folgenden switch
+   % wenn \mainmatter definiert ist.
+   \newif\if@mainmatter\@mainmattertrue
+   \newcommand{\mainmatter}{%
+      %  (1,2,3)
+      \pagenumbering{arabic}%
+      \setcounter{page}{1}%
+   }
+}{}
+\@ifundefined{backmatter}{%
+   \newcommand{\backmatter}{
+      % (i, ii, iii)
+      \pagenumbering{roman}
+   }
+}{}
+\makeatother
+
+% -> switches $ back to its original definition
+\RequirePackage{etoolbox}
+\AtBeginEnvironment{tabu}{\catcode`$=3 }
+
+% fix incompatibilty problems with tikz
+\AtBeginDocument{\catcode`\$=3}
