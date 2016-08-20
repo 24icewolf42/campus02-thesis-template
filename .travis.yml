@@ -12,6 +12,7 @@ notifications:
 
 script:
 #  - latexmk -pdf -e '$pdflatex=q/xelatex %O %S/' thesis.tex
+  - touch thesis.tex
 
 deploy:
   provider: releases
