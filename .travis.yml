@@ -11,4 +11,4 @@ notifications:
   email: false
 
 script:
-  - latexmk -xelatex thesis
+  - latexmk -pdf -e '$pdflatex=q/xelatex %O %S/' thesis.tex
