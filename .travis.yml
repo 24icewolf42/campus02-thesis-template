@@ -12,3 +12,11 @@ notifications:
 
 script:
   - latexmk -pdf -e '$pdflatex=q/xelatex %O %S/' thesis.tex
+
+deploy:
+  provider: releases
+  api_key: "34305b7b08fcc5d4b746bef87edd8588f05d7b72"
+  file: "thesis.pdf"
+  skip_cleanup: true
+  on:
+    tags: true
