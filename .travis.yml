@@ -11,7 +11,7 @@ notifications:
   email: false
 
 script:
-  - latexmk -pdf -e '$pdflatex=q/xelatex %O %S/' thesis.tex
+#  - latexmk -pdf -e '$pdflatex=q/xelatex %O %S/' thesis.tex
 
 deploy:
   provider: releases
